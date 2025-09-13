@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+      - ./data:/data
+    environment:
+      - CONFIG_PATH=/app/config.json
+
+  # Example rclone daemon
+  # rclone:
+  #   image: rclone/rclone
+  #   command: rcd --rc-addr=0.0.0.0:5572 --rc-user=user --rc-pass=pass --rc-serve --rc-no-auth
+  #   ports:
+  #     - "5572:5572"
+  #   volumes:
+  #     - ./rclone_data:/data
