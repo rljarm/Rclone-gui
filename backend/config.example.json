@@ -1,0 +1,17 @@
+{
+  "nodes": [
+    {
+      "name": "home-server",
+      "url": "http://100.101.102.103:5572",
+      "user": "rclone_user",
+      "pass": "rclone_pass"
+    },
+    {
+      "name": "seedbox",
+      "url": "http://100.101.102.104:5572",
+      "user": "rclone_user",
+      "pass": "rclone_pass"
+    }
+  ],
+  "api_key": "your-secret-api-key"
+}
