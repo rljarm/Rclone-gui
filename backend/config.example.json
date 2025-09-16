@@ -1,0 +1,17 @@
+{
+  "nodes": [
+    {
+      "id": "home-nas",
+      "name": "Home NAS",
+      "ip": "100.84.76.84",
+      "port": 55743
+    },
+    {
+      "id": "vps-backup",
+      "name": "VPS Backup",
+      "ip": "100.92.7.29",
+      "port": 55744
+    }
+  ],
+  "api_key": ""  
+}

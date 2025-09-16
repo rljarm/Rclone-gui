@@ -1,0 +1,39 @@
+version: "3.9"
+
+services:
+  hub:
+    build:
+      context: ./backend
+    container_name: rclone-hub
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - ./backend:/app
+      - hub_data:/data
+    environment:
+      HUB_DB_PATH: "/data/hub.db"
+      HUB_CONFIG: "/app/config.json"
+    command: >
+      sh -c "pip install --no-cache-dir -r requirements.txt && \
+             uvicorn app:app --host 0.0.0.0 --port 8000"
+
+  # Example rclone agent
+  # This service demonstrates how to run a rclone remote‑control daemon in a container.
+  # It is commented out because you should run rclone agents on your own servers.
+  # rcd_example:
+  #   image: rclone/rclone:latest
+  #   container_name: rclone-rcd-example
+  #   restart: unless-stopped
+  #   network_mode: host
+  #   command: >
+  #     rcd \
+  #       --rc-addr=100.84.76.84:55743 \
+  #       --rc-no-auth \
+  #       --rc-serve \
+  #       --use-json-log
+  #   volumes:
+  #     - /data:/data:rw
+
+volumes:
+  hub_data:
+    driver: local
